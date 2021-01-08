@@ -2,12 +2,11 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import subprocess
 from typing import Any
 
 from whichcraft import which
-
-import os
 
 
 class bcolors:
@@ -43,7 +42,7 @@ def cmd_output(output, *cmd, **kwargs):  # type: (bool, *str, **Any) -> str
 
 def run_gradle_task(output, *tasks):  # type: (bool, *str) -> int
     if which('gradle') is None:
-        print(f"{bcolors.FAIL}Gradle could not be detected.{bcolors.ENDC}")
+        print(f'{bcolors.FAIL}Gradle could not be detected.{bcolors.ENDC}')
         return 1
 
     try:
@@ -51,15 +50,15 @@ def run_gradle_task(output, *tasks):  # type: (bool, *str) -> int
         cmd_output(output, 'gradle', *tasks)
         return 0
     except CalledProcessError:
-        print(f"{bcolors.FAIL}The above error occurred running gradle task.{bcolors.ENDC}")
+        print(f'{bcolors.FAIL}The above error occurred running gradle task.{bcolors.ENDC}')
         return 1
 
 
 def run_gradle_wrapper_task(output, *tasks):  # type: (bool, *str) -> int
     if which('gradlew', path='.') is None:
         print(
-            f"{bcolors.FAIL}Could not locate gradle wrapper. Initialize with `gradle wrapper`, "
-            f"or remove the -w (--wrapper) flag to use native gradle.{bcolors.ENDC}"
+            f'{bcolors.FAIL}Could not locate gradle wrapper. Initialize with `gradle wrapper`, '
+            f'or remove the -w (--wrapper) flag to use native gradle.{bcolors.ENDC}',
         )
         return 1
 
@@ -67,6 +66,6 @@ def run_gradle_wrapper_task(output, *tasks):  # type: (bool, *str) -> int
         print("{}Running 'gradle {}' with wrapper enabled.{}".format(bcolors.OKBLUE, ' '.join(tasks), bcolors.ENDC))
         cmd_output(output, '.{}gradlew'.format(os.path.sep), *tasks)
         return 0
-    except CalledProcessError as e:
-        print(f"{bcolors.FAIL}The above error occurred running gradle wrapper task.{bcolors.ENDC}")
+    except CalledProcessError:
+        print(f'{bcolors.FAIL}The above error occurred running gradle wrapper task.{bcolors.ENDC}')
         return 1

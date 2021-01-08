@@ -4,18 +4,19 @@ import argparse
 from typing import Optional
 from typing import Sequence
 
-from pre_commit_hooks.util import run_gradle_wrapper_task, run_gradle_task
+from pre_commit_hooks.util import run_gradle_task
+from pre_commit_hooks.util import run_gradle_wrapper_task
 
 
 def main(argv=None):  # type: (Optional[Sequence[str]]) -> int
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-w', '--wrapper', action='store_true',
-        help='Runs commands using gradlew. Requires gradle wrapper configuration within the project.'
+        help='Runs commands using gradlew. Requires gradle wrapper configuration within the project.',
     )
     parser.add_argument(
         '-o', '--output', action='store_true',
-        help='Prints the output of all executed gradle commands.'
+        help='Prints the output of all executed gradle commands.',
     )
     args = parser.parse_args(argv)
 
