@@ -10,7 +10,7 @@ See also: https://github.com/pre-commit/pre-commit-hooks
 
 Add this to your `.pre-commit-config.yaml`
 
-    -   repo: https://github.com/jguttman94/pre-commit-gradle
+    -   repo: https://github.com/atychang/pre-commit-gradle
         rev: v0.2.1  # Use the ref you want to point at
         hooks:
         -   id: gradle-check
