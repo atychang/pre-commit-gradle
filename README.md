@@ -5,6 +5,7 @@ Some custom gradle hooks for pre-commit.
 
 See also: https://github.com/pre-commit/pre-commit-hooks
 
+The current version builds upon previous work done by [jguttman94/pre-commit-gradle](https://github.com/jguttman94/pre-commit-gradle).
 
 ### Using pre-commit-gradle with pre-commit
 
